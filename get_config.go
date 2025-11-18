@@ -7,7 +7,7 @@ import (
 
 type Conf map[string][]string
 
-func (conf *Conf) GetConfVal(key string) string {
+func (conf *Conf) GetVal(key string) string {
 	if vals, ok := (*conf)[key]; ok {
 		return vals[0]
 	}
@@ -15,7 +15,7 @@ func (conf *Conf) GetConfVal(key string) string {
 }
 
 // read configure file
-func GetConf(filename string) (map[string][]string, error) {
+func GetConf(filename string) (Conf, error) {
 	content, err := os.ReadFile(filename)
 	if nil != err {
 		return nil, err
