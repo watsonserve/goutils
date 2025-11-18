@@ -5,6 +5,15 @@ import (
 	"strings"
 )
 
+type Conf map[string][]string
+
+func (conf *Conf) GetConfVal(key string) string {
+	if vals, ok := (*conf)[key]; ok {
+		return vals[0]
+	}
+	return ""
+}
+
 // read configure file
 func GetConf(filename string) (map[string][]string, error) {
 	content, err := os.ReadFile(filename)
