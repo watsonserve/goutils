@@ -169,7 +169,7 @@ func QuicListenAddr(network, crt, key, ca string, cfg *quic.Config, verifyClient
 	return quic.ListenAddr(network, tlsCfg, cfg)
 }
 
-func QuicDial(network, crt, key, ca string, cfg *quic.Config, ignore bool) (quic.Connection, error) {
+func QuicDial(network, crt, key, ca string, cfg *quic.Config, ignore bool) (*quic.Conn, error) {
 	var flag TlsFlag = TLSFLAG_CLIENT
 	if ignore {
 		flag = TLSFLAG_IGNORE
